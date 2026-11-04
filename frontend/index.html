@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f5ef">
+  <meta name="description" content="A simple timer for focused study sessions and short breaks.">
+  <title>Study Timer</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Study Timer home">
+        <span class="brand-name">Study Timer</span>
+      </a>
+    </header>
+
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow"></p>
+          <h1 id="page-title">Make time for focus.</h1>
+          <p class="intro-copy"></p>
+        </div>
+        <button class="sound-button" id="soundButton" type="button" aria-pressed="true">
+          <span id="soundButtonText">Sound on</span>
+        </button>
+      </section>
+
+      <div class="workspace">
+        <section class="timer-card" aria-labelledby="timer-heading">
+          <div class="timer-card-header">
+            <div>
+              <p class="eyebrow">FOCUS CYCLE</p>
+              <h2 id="timer-heading">One thing at a time.</h2>
+            </div>
+            <span class="phase-badge" id="phaseBadge">Study session</span>
+          </div>
+
+          <div class="timer-display" id="timerDisplay" role="timer" aria-label="25 minutes remaining" aria-live="off">
+            <svg class="progress-ring" viewBox="0 0 200 200" aria-hidden="true">
+              <circle class="progress-ring-track" cx="100" cy="100" r="88"></circle>
+              <circle class="progress-ring-value" id="progressRing" cx="100" cy="100" r="88"></circle>
+            </svg>
+            <div class="timer-readout">
+              <span class="timer-time" id="timerTime">25:00</span>
+              <span class="timer-caption" id="timerCaption">Ready when you are</span>
+            </div>
+          </div>
+
+          <div class="timer-controls">
+            <button class="button button-primary" id="toggleButton" type="button">Start session</button>
+            <button class="button button-secondary" id="resetButton" type="button">Reset</button>
+          </div>
+          <p class="timer-note" id="timerNote">A study session is followed by a five-minute break.</p>
+        </section>
+
+        <aside class="side-column" aria-label="Session details and timer settings">
+          <section class="stats-card" aria-labelledby="stats-heading">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">YOUR PROGRESS</p>
+                <h2 id="stats-heading">Sessions completed</h2>
+              </div>
+            </div>
+            <div class="stats-grid">
+              <div class="stat-item">
+                <span class="stat-number" id="totalSessions">0</span>
+                <span class="stat-label">All time</span>
+              </div>
+              <div class="stat-divider" aria-hidden="true"></div>
+              <div class="stat-item">
+                <span class="stat-number" id="todaySessions">0</span>
+                <span class="stat-label">Today</span>
+              </div>
+            </div>
+            <p class="stats-message" id="statsMessage" role="status">Your totals are saved on this device.</p>
+          </section>
+
+          <section class="settings-card" aria-labelledby="settings-heading">
+            <div class="section-heading settings-heading">
+              <div>
+                <p class="eyebrow">MAKE IT YOURS</p>
+                <h2 id="settings-heading">Timer lengths</h2>
+              </div>
+            </div>
+            <form id="settingsForm">
+              <label class="field-label" for="studyDuration">Study minutes</label>
+              <div class="input-wrap">
+                <input id="studyDuration" name="studyDuration" type="number" min="1" max="180" step="1" value="25" required>
+                <span>min</span>
+              </div>
+
+              <label class="field-label" for="breakDuration">Break minutes</label>
+              <div class="input-wrap">
+                <input id="breakDuration" name="breakDuration" type="number" min="1" max="60" step="1" value="5" required>
+                <span>min</span>
+              </div>
+
+              <button class="button button-save" type="submit">Save timer lengths</button>
+              <p class="settings-message" id="settingsMessage" role="status"></p>
+            </form>
+          </section>
+        </aside>
+      </div>
+
+      <footer class="page-footer">
+        <span>Focus at your own pace.</span>
+        <span>Study, pause, reset, repeat.</span>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
